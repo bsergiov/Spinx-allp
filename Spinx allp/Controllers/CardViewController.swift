@@ -11,6 +11,16 @@ class CardViewController: UIViewController {
 
     
     // MARK: - UI Elements
+    private lazy var closeButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        button.setImage(UIImage(systemName: "x.circle.fill"), for: .normal)
+        button.tintColor = .specialYeloow
+        button.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private lazy var getButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("GET", for: .normal)
@@ -43,6 +53,26 @@ class CardViewController: UIViewController {
         return title
     }()
     
+    private lazy var priceLabel: UILabel = {
+        let label = UILabel()
+        label.font = .robotoBold20()
+        label.textColor = .specialLightGray
+        label.text = "200"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var coinImage: UIImageView = {
+        let image = UIImageView()
+        
+        image.image = UIImage(named: "coinCard")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    
+    private lazy var priceStackView = UIStackView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,6 +88,10 @@ extension CardViewController {
     @objc private func dkfjdsfjsdf() {
         print("tap")
     }
+    
+    @objc private func closeTapped() {
+        print("close tap")
+    }
 }
 
 // MARK: - Setup Views
@@ -66,13 +100,23 @@ extension CardViewController {
         view.backgroundColor = .specialLightGray
         view.addSubview(getButton)
         view.addSubview(backgroundForOffer)
+        view.addSubview(closeButton)
         backgroundForOffer.addSubview(titleForProduct)
+        priceStackView = UIStackView(arrangedSubviews: [priceLabel, coinImage], axis: .horizontal, spacing: 10)
+        backgroundForOffer.addSubview(priceStackView)
     }
 }
 
 // MARK: - Setup Constraints
 extension CardViewController {
     private func setupConstraints() {
+        
+        NSLayoutConstraint.activate([
+            closeButton.heightAnchor.constraint(equalToConstant: 22),
+            closeButton.widthAnchor.constraint(equalToConstant: 22),
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
+        ])
         
         NSLayoutConstraint.activate([
             getButton.heightAnchor.constraint(equalToConstant: 50),
@@ -94,6 +138,16 @@ extension CardViewController {
             titleForProduct.leadingAnchor.constraint(equalTo: backgroundForOffer.leadingAnchor, constant: 13),
             titleForProduct.trailingAnchor.constraint(equalTo: backgroundForOffer.trailingAnchor, constant: -13),
             titleForProduct.topAnchor.constraint(equalTo: backgroundForOffer.topAnchor, constant: 31)
+        ])
+        
+        NSLayoutConstraint.activate([
+            coinImage.heightAnchor.constraint(equalToConstant: 25),
+            coinImage.widthAnchor.constraint(equalToConstant: 25)
+        ])
+        
+        NSLayoutConstraint.activate([
+            priceStackView.leadingAnchor.constraint(equalTo: backgroundForOffer.leadingAnchor, constant: 20),
+            priceStackView.bottomAnchor.constraint(equalTo: backgroundForOffer.bottomAnchor, constant: -20)
         ])
     }
 }

@@ -28,7 +28,7 @@ class CardViewController: UIViewController {
         button.backgroundColor = .specialYeloow
         button.tintColor = .specialDarkGrey
         button.titleLabel?.font = .robotoBold16()
-        button.addTarget(self, action: #selector(dkfjdsfjsdf), for: .touchUpInside)
+        button.addTarget(self, action: #selector(getTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -85,8 +85,9 @@ class CardViewController: UIViewController {
 
 // MARK: - Private Methodes
 extension CardViewController {
-    @objc private func dkfjdsfjsdf() {
-        print("tap")
+    @objc private func getTapped() {
+        let vc = UIViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func closeTapped() {
@@ -97,6 +98,7 @@ extension CardViewController {
 // MARK: - Setup Views
 extension CardViewController {
     private func setupViews() {
+        title = "Card"
         view.backgroundColor = .specialLightGray
         view.addSubview(getButton)
         view.addSubview(backgroundForOffer)
@@ -142,7 +144,7 @@ extension CardViewController {
         
         NSLayoutConstraint.activate([
             coinImage.heightAnchor.constraint(equalToConstant: 25),
-            coinImage.widthAnchor.constraint(equalToConstant: 25)
+            coinImage.widthAnchor.constraint(equalToConstant: 20)
         ])
         
         NSLayoutConstraint.activate([

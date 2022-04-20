@@ -9,7 +9,6 @@ import UIKit
 
 class CardViewController: UIViewController {
 
-    
     // MARK: - UI Elements
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
@@ -70,7 +69,6 @@ class CardViewController: UIViewController {
         return image
     }()
     
-    
     private lazy var priceStackView = UIStackView()
     
     override func viewDidLoad() {
@@ -78,9 +76,7 @@ class CardViewController: UIViewController {
         
         setupViews()
         setupConstraints()
-        
     }
-    
 }
 
 // MARK: - Private Methodes

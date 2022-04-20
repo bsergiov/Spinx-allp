@@ -12,4 +12,5 @@ extension UIColor {
     static let specialLightGray = #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
     static let specialRed = #colorLiteral(red: 0.862745098, green: 0.2666666667, blue: 0.2431372549, alpha: 1)
     static let specialDarkGrey = #colorLiteral(red: 0.4117647059, green: 0.4078431373, blue: 0.4156862745, alpha: 1)
+    static let speceiaBackground = #colorLiteral(red: 0.2079616189, green: 0.2079616189, blue: 0.2079616189, alpha: 1)
 }

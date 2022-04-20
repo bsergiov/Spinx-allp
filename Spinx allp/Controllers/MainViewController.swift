@@ -9,43 +9,63 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    // MARK: - View for controller
-    private let userPhotoImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person.fill")
-        imageView.tintColor = .specialLightGray
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    // MARK: - UI Elements
+    lazy private var profileBarButtonItem: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.target = self
+        button.action = #selector(leftBarButtonTaped)
+        button.tintColor = .specialLightGray
+        button.image = UIImage(systemName: "person.fill")
+        return button
     }()
     
+    lazy private var buttonRightBalans: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(rightBarButtonTaped), for: .touchUpInside)
+        button.setImage(UIImage(named: "coinCard"), for: .normal)
+        button.setTitle(" 200", for: .normal)
+        button.setTitleColor(UIColor.specialLightGray, for: .normal)
+        return button
+    }()
     
+    lazy private var balanseBarButtonItem: UIBarButtonItem = {
+        let customItem = UIBarButtonItem(customView: buttonRightBalans)
+        return customItem
+    }()
+    
+    lazy private var leftItem: UIBarButtonItem = {
+        let item = UIBarButtonItem()
+        item.image = UIImage(systemName: "person.fill")
+        return item
+    }()
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setConstraints()
     }
     
-   
+    @objc private func leftBarButtonTaped() {
+        print("tap Leftbbi")
+    }
+    
+    @objc private func rightBarButtonTaped() {
+        print("tap Rightbbi")
+    }
 }
 
 // MARK: - Setup View
 extension MainViewController {
     private func setupViews() {
         view.backgroundColor = .white
-        view.addSubview(userPhotoImageView)
+        
+        navigationItem.setLeftBarButton(profileBarButtonItem, animated: true)
+        navigationItem.setRightBarButton(balanseBarButtonItem, animated: true)
     }
 }
 
 // MARK: - Setup Constraints
 extension MainViewController {
     private func setConstraints() {
-        NSLayoutConstraint.activate([
-            userPhotoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            userPhotoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            userPhotoImageView.heightAnchor.constraint(equalToConstant: 36),
-            userPhotoImageView.widthAnchor.constraint(equalToConstant: 33)
-        ])
     }
 }
-
-

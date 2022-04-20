@@ -25,20 +25,21 @@ class MainTabBarController: UITabBarController {
     
     private func setupItems() {
         let mainVC = MainViewController()
-        let cardVC = CardViewController()
-        let cardNC = UINavigationController(rootViewController: cardVC)
+        let menuVC = MenuViewController()
         
-        setViewControllers([mainVC, cardNC], animated: true)
+        let menuNC = UINavigationController(rootViewController: menuVC)
+        let mainNc = UINavigationController(rootViewController: mainVC)
+        
+        setViewControllers([mainNc, menuNC], animated: true)
         
         guard let items = tabBar.items else { return }
         
         items[0].title = "Home"
-        items[1].title = "Card"
+        items[1].title = "Menu"
         
         items[0].image = UIImage(systemName: "house.fill")
         items[1].image = UIImage(systemName: "menucard.fill")
         
         UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont(name: "Roboto-Bold", size: 12) as Any], for: .normal)
     }
-
 }

@@ -9,6 +9,7 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
+    // MARK: - UI Elements
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -30,10 +31,12 @@ class MenuViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableview = UITableView()
+        tableview.backgroundColor = .none
         tableview.translatesAutoresizingMaskIntoConstraints = false
         return tableview
     }()
     
+    // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
@@ -57,11 +60,11 @@ class MenuViewController: UIViewController {
     }
 }
 
-// MARK: - Setup UI Elemetnts
+// MARK: - Setup Views
 extension MenuViewController {
     private func setupView() {
         title = "Menu"
-        view.backgroundColor = .white
+        view.backgroundColor = .speceiaBackground
         view.addSubview(tableView)
         view.addSubview(collectionView)
         view.addSubview(titleChaper)
@@ -95,6 +98,7 @@ extension MenuViewController {
     }
 }
 
+// MARK: - UITableViewDelegate, UITableViewDataSource
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -103,7 +107,8 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableViewCell.id, for: indexPath) as! MenuTableViewCell
-        cell.backgroundColor = .red
+        cell.setupCell()
+        
         return cell
     }
 }

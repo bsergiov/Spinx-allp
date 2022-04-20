@@ -101,7 +101,7 @@ class MainViewController: UIViewController {
         return button
     }()
     
-    // MARK: - Life Cicle
+    // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()

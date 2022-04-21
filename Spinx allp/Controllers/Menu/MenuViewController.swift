@@ -111,6 +111,11 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = CardViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: - Protocols CollectionView
@@ -121,15 +126,16 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCollectionViewCell.id, for: indexPath) as! MenuCollectionViewCell
-        cell.backgroundColor = .green
-        cell.layer.borderColor = UIColor.black.cgColor
-        cell.layer.borderWidth = 4
-        cell.layer.cornerRadius = cell.frame.height / 2
+        cell.setupCell()
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       // TODO update table view for actual part
     }
 }
 

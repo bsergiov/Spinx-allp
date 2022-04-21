@@ -34,7 +34,7 @@
 		CC426C98280975D000FC5A26 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC426C8B280975CF00FC5A26 /* Roboto-Italic.ttf */; };
 		CC426C99280975D000FC5A26 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC426C8C280975D000FC5A26 /* Roboto-ThinItalic.ttf */; };
 		CC426C9A280975D000FC5A26 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC426C8D280975D000FC5A26 /* Roboto-Light.ttf */; };
-		CC426C9C2809971A00FC5A26 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC426C9B2809971A00FC5A26 /* CardViewController.swift */; };
+		CC426C9C2809971A00FC5A26 /* CardProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC426C9B2809971A00FC5A26 /* CardProductViewController.swift */; };
 		CC426C9E2810280E00FC5A26 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC426C9D2810280E00FC5A26 /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +68,7 @@
 		CC426C8B280975CF00FC5A26 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		CC426C8C280975D000FC5A26 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		CC426C8D280975D000FC5A26 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
-		CC426C9B2809971A00FC5A26 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		CC426C9B2809971A00FC5A26 /* CardProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardProductViewController.swift; sourceTree = "<group>"; };
 		CC426C9D2810280E00FC5A26 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				CC426C622809652F00FC5A26 /* MainViewController.swift */,
-				CC426C9B2809971A00FC5A26 /* CardViewController.swift */,
+				CC426C9B2809971A00FC5A26 /* CardProductViewController.swift */,
 				CC002F5F280D515700383B63 /* MainTabBarController.swift */,
 				CC426C9D2810280E00FC5A26 /* AboutViewController.swift */,
 				CC002F6A280D81DB00383B63 /* Menu */,
@@ -299,7 +299,7 @@
 				CC426C5F2809652F00FC5A26 /* AppDelegate.swift in Sources */,
 				CC002F66280D7EA100383B63 /* MenuViewController.swift in Sources */,
 				CC002F5A280A30D600383B63 /* ProductModel.swift in Sources */,
-				CC426C9C2809971A00FC5A26 /* CardViewController.swift in Sources */,
+				CC426C9C2809971A00FC5A26 /* CardProductViewController.swift in Sources */,
 				CC426C7F28096ED300FC5A26 /* StackView + Extensions.swift in Sources */,
 				CC426C9E2810280E00FC5A26 /* AboutViewController.swift in Sources */,
 				CC426C7D28096E2000FC5A26 /* UIView + Extensions.swift in Sources */,

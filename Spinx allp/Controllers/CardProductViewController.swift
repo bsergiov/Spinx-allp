@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardViewController: UIViewController {
+class CardProductViewController: UIViewController {
 
     // MARK: - UI Elements
     private lazy var closeButton: UIButton = {
@@ -80,7 +80,7 @@ class CardViewController: UIViewController {
 }
 
 // MARK: - Private Methodes
-extension CardViewController {
+extension CardProductViewController {
     @objc private func getTapped() {
         let vc = UIViewController()
         navigationController?.pushViewController(vc, animated: true)
@@ -92,7 +92,7 @@ extension CardViewController {
 }
 
 // MARK: - Setup Views
-extension CardViewController {
+extension CardProductViewController {
     private func setupViews() {
         title = "Card"
         view.backgroundColor = .specialLightGray
@@ -106,7 +106,7 @@ extension CardViewController {
 }
 
 // MARK: - Setup Constraints
-extension CardViewController {
+extension CardProductViewController {
     private func setupConstraints() {
         
         NSLayoutConstraint.activate([

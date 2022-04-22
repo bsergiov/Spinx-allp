@@ -27,21 +27,24 @@ class MainTabBarController: UITabBarController {
         let mainVC = MainViewController()
         let menuVC = MenuViewController()
         let aboutVC = AboutViewController()
+        let onBoardVC = OnBoardingViewController()
         
         let menuNC = UINavigationController(rootViewController: menuVC)
         let mainNc = UINavigationController(rootViewController: mainVC)
         
-        setViewControllers([mainNc, menuNC, aboutVC], animated: true)
+        setViewControllers([onBoardVC, mainNc, menuNC, aboutVC], animated: true)
         
         guard let items = tabBar.items else { return }
         
         items[0].title = "Home"
-        items[1].title = "Menu"
-        items[2].title = "Info"
+        items[1].title = "Home"
+        items[2].title = "Menu"
+        items[3].title = "Info"
         
         items[0].image = UIImage(systemName: "house.fill")
-        items[1].image = UIImage(systemName: "menucard.fill")
-        items[2].image = UIImage(systemName: "info.circle.fill")
+        items[1].image = UIImage(systemName: "house.fill")
+        items[2].image = UIImage(systemName: "menucard.fill")
+        items[3].image = UIImage(systemName: "info.circle.fill")
         
         UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont(name: "Roboto-Bold", size: 12) as Any], for: .normal)
     }

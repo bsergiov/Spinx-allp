@@ -12,6 +12,8 @@
 		CC002F66280D7EA100383B63 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC002F65280D7EA100383B63 /* MenuViewController.swift */; };
 		CC002F68280D81C700383B63 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC002F67280D81C700383B63 /* MenuTableViewCell.swift */; };
 		CC04A64C280EF858009A44FF /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC04A64B280EF858009A44FF /* MenuCollectionViewCell.swift */; };
+		CC29143B2812A4480085B2D3 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC29143A2812A4480085B2D3 /* StorageManager.swift */; };
+		CC29143D2812A6F10085B2D3 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC29143C2812A6F10085B2D3 /* OnBoardingViewController.swift */; };
 		CC426C5F2809652F00FC5A26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC426C5E2809652F00FC5A26 /* AppDelegate.swift */; };
 		CC426C612809652F00FC5A26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC426C602809652F00FC5A26 /* SceneDelegate.swift */; };
 		CC426C632809652F00FC5A26 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC426C622809652F00FC5A26 /* MainViewController.swift */; };
@@ -44,6 +46,8 @@
 		CC002F65280D7EA100383B63 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		CC002F67280D81C700383B63 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		CC04A64B280EF858009A44FF /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC29143A2812A4480085B2D3 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		CC29143C2812A6F10085B2D3 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		CC426C5B2809652F00FC5A26 /* Spinx allp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spinx allp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC426C5E2809652F00FC5A26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC426C602809652F00FC5A26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +113,14 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		CC2914392812A4180085B2D3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CC29143A2812A4480085B2D3 /* StorageManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		CC426C522809652F00FC5A26 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +142,7 @@
 			children = (
 				CC002F58280A30BB00383B63 /* Models */,
 				CC426C732809656800FC5A26 /* Controllers */,
+				CC2914392812A4180085B2D3 /* Services */,
 				CC426C76280966DA00FC5A26 /* Extensions */,
 				CC426C742809659500FC5A26 /* SupportFiles */,
 				CC426C75280965B300FC5A26 /* Resources */,
@@ -145,6 +158,7 @@
 				CC426C9B2809971A00FC5A26 /* CardProductViewController.swift */,
 				CC002F5F280D515700383B63 /* MainTabBarController.swift */,
 				CC426C9D2810280E00FC5A26 /* AboutViewController.swift */,
+				CC29143C2812A6F10085B2D3 /* OnBoardingViewController.swift */,
 				CC002F6A280D81DB00383B63 /* Menu */,
 			);
 			path = Controllers;
@@ -302,7 +316,9 @@
 				CC426C9C2809971A00FC5A26 /* CardProductViewController.swift in Sources */,
 				CC426C7F28096ED300FC5A26 /* StackView + Extensions.swift in Sources */,
 				CC426C9E2810280E00FC5A26 /* AboutViewController.swift in Sources */,
+				CC29143D2812A6F10085B2D3 /* OnBoardingViewController.swift in Sources */,
 				CC426C7D28096E2000FC5A26 /* UIView + Extensions.swift in Sources */,
+				CC29143B2812A4480085B2D3 /* StorageManager.swift in Sources */,
 				CC002F60280D515700383B63 /* MainTabBarController.swift in Sources */,
 				CC426C612809652F00FC5A26 /* SceneDelegate.swift in Sources */,
 			);

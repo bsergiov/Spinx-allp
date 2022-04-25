@@ -104,6 +104,7 @@ class MainViewController: UIViewController {
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkOnBoarding()
         setupViews()
         setConstraints()
     }
@@ -119,6 +120,17 @@ class MainViewController: UIViewController {
     
     @objc private func tappedShowCard() {
         print("tap tappedShowCard")
+    }
+    
+    // MARK: - Private Methodes
+    private func checkOnBoarding() {
+        if !StorageManager.shared.getStatus(for: "onBoarding") {
+            
+            StorageManager.shared.save(for: "onBoarding", value: true)
+            let vc = OnBoardingViewController()
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: false)
+        }
     }
 }
 

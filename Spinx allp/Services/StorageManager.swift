@@ -24,4 +24,8 @@ class StorageManager {
     func save(for key: String, value: Int) {
         UserDefaults.standard.set(value, forKey: key)
     }
+    
+    func getStatus(for key: String) -> Bool {
+        UserDefaults.standard.bool(forKey: key)
+    }
 }

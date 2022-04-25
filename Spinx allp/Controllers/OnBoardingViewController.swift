@@ -56,6 +56,7 @@ class OnBoardingViewController: UIViewController {
         button.tintColor = .specialDarkGrey
         button.titleLabel?.font = .robotoMedium24()
         button.layer.cornerRadius = 15
+        button.addTarget(self, action: #selector(nextTapped), for: .touchUpInside)
         button.backgroundColor = .specialFontOnBoarding
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +71,11 @@ class OnBoardingViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupConstraints()
+    }
+    
+    // MARK: - Private Methodes
+    @objc private func nextTapped() {
+        dismiss(animated: true)
     }
 }
 

@@ -9,12 +9,13 @@ import UIKit
 
 extension UIFont {
     
+    
     /// Medium roboto 24
     static func robotoMedium24() -> UIFont? {
         UIFont.init(name: "Roboto-Medium", size: 24)
     }
     /// Medium roboto 12
-    static func robobtMedium12() -> UIFont? {
+    static func robotoMedium12() -> UIFont? {
         UIFont.init(name: "Roboto-Medium", size: 12)
     }
     /// Medium roboto 14

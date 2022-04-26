@@ -124,14 +124,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		CC2914402816C2F50085B2D3 /* About */ = {
-			isa = PBXGroup;
-			children = (
-				CC426C9D2810280E00FC5A26 /* AboutViewController.swift */,
-			);
-			path = About;
-			sourceTree = "<group>";
-		};
 		CC426C522809652F00FC5A26 = {
 			isa = PBXGroup;
 			children = (
@@ -168,7 +160,7 @@
 				CC426C622809652F00FC5A26 /* MainViewController.swift */,
 				CC426C9B2809971A00FC5A26 /* CardProductViewController.swift */,
 				CC002F5F280D515700383B63 /* MainTabBarController.swift */,
-				CC2914402816C2F50085B2D3 /* About */,
+				CC426C9D2810280E00FC5A26 /* AboutViewController.swift */,
 				CC29143C2812A6F10085B2D3 /* OnBoardingViewController.swift */,
 				CC002F6A280D81DB00383B63 /* Menu */,
 			);

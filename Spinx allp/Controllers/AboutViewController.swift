@@ -108,7 +108,7 @@ class AboutViewController: UIViewController {
         button.tintColor = .specialDarkGrey
         button.titleLabel?.font = .robotoMedium12()
         button.addTarget(self, action: #selector(policyAndTerms), for: .touchUpInside)
-        button.tag = 1
+        button.tag = 0
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -120,7 +120,7 @@ class AboutViewController: UIViewController {
         button.tintColor = .specialDarkGrey
         button.titleLabel?.font = .robotoMedium12()
         button.addTarget(self, action: #selector(policyAndTerms), for: .touchUpInside)
-        button.tag = 2
+        button.tag = 1
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -132,12 +132,15 @@ class AboutViewController: UIViewController {
         setupConstraints()
     }
     
+    // MARK: - UI Action Methodes
     @objc private func socialTapped(_ sender: UIButton) {
         print("socialTapped")
     }
     
     @objc private func policyAndTerms(_ sender: UIButton) {
-        print("policyAndTerms")
+        let vc = WebViewController()
+        vc.statusWork = sender.tag
+        present(vc, animated: true)
     }
 }
 

@@ -13,4 +13,50 @@ struct DataManager {
     static let adrees = "05-540 Zalesie Górne ul. Młodych Wilcząt 36"
     
     static let workShedule = "Monday - Sunday"
+    
+    static let urlPolicyString = "https://yandex.ru"
+    static let urlTermsString = "https://google.com"
+    
+    static let products = [
+        CategoryProduct(name: "", products: [
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+        ]),
+        CategoryProduct(name: "", products: [
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+        ]),
+        CategoryProduct(name: "", products: [
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100)
+        ]),
+        CategoryProduct(name: "", products: [
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100)
+        ]),
+        CategoryProduct(name: "", products: [
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100),
+            ProductModel(name: "", price: 100)
+        ])
+    ]
 }

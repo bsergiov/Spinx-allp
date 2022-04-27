@@ -16,6 +16,7 @@
 		CC29143D2812A6F10085B2D3 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC29143C2812A6F10085B2D3 /* OnBoardingViewController.swift */; };
 		CC29143F2816C2080085B2D3 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC29143E2816C2080085B2D3 /* DataManager.swift */; };
 		CC29146528181F5A0085B2D3 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC29146428181F5A0085B2D3 /* WebViewController.swift */; };
+		CC291467281983AC0085B2D3 /* BonusCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC291466281983AC0085B2D3 /* BonusCardViewController.swift */; };
 		CC426C5F2809652F00FC5A26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC426C5E2809652F00FC5A26 /* AppDelegate.swift */; };
 		CC426C612809652F00FC5A26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC426C602809652F00FC5A26 /* SceneDelegate.swift */; };
 		CC426C632809652F00FC5A26 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC426C622809652F00FC5A26 /* MainViewController.swift */; };
@@ -52,6 +53,7 @@
 		CC29143C2812A6F10085B2D3 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		CC29143E2816C2080085B2D3 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		CC29146428181F5A0085B2D3 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		CC291466281983AC0085B2D3 /* BonusCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusCardViewController.swift; sourceTree = "<group>"; };
 		CC426C5B2809652F00FC5A26 /* Spinx allp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spinx allp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC426C5E2809652F00FC5A26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC426C602809652F00FC5A26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				CC29143C2812A6F10085B2D3 /* OnBoardingViewController.swift */,
 				CC002F6A280D81DB00383B63 /* Menu */,
 				CC29146428181F5A0085B2D3 /* WebViewController.swift */,
+				CC291466281983AC0085B2D3 /* BonusCardViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				CC002F5A280A30D600383B63 /* ProductModel.swift in Sources */,
 				CC426C9C2809971A00FC5A26 /* CardProductViewController.swift in Sources */,
 				CC29143F2816C2080085B2D3 /* DataManager.swift in Sources */,
+				CC291467281983AC0085B2D3 /* BonusCardViewController.swift in Sources */,
 				CC426C7F28096ED300FC5A26 /* StackView + Extensions.swift in Sources */,
 				CC426C9E2810280E00FC5A26 /* AboutViewController.swift in Sources */,
 				CC29143D2812A6F10085B2D3 /* OnBoardingViewController.swift in Sources */,

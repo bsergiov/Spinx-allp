@@ -28,4 +28,8 @@ class StorageManager {
     func getStatus(for key: String) -> Bool {
         UserDefaults.standard.bool(forKey: key)
     }
+    
+    func getBalans(for key: String) -> Int {
+        UserDefaults.standard.integer(forKey: key)
+    }
 }

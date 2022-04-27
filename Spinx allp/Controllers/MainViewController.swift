@@ -36,7 +36,8 @@ class MainViewController: UIViewController {
         let button = UIButton()
         button.addTarget(self, action: #selector(rightBarButtonTaped), for: .touchUpInside)
         button.setImage(UIImage(named: "coinCard"), for: .normal)
-        button.setTitle(" 200", for: .normal)
+        let balans = StorageManager.shared.getBalans(for: "balans")
+        button.setTitle(" \(balans)", for: .normal)
         button.setTitleColor(UIColor.specialLightGray, for: .normal)
         return button
     }()
@@ -111,15 +112,15 @@ class MainViewController: UIViewController {
     
     // MARK: - Action Methodes
     @objc private func leftBarButtonTaped() {
-        print("tap Leftbbi")
+        
     }
     
     @objc private func rightBarButtonTaped() {
-        print("tap Rightbbi")
+       
     }
     
     @objc private func tappedShowCard() {
-        print("tap tappedShowCard")
+        
     }
     
     // MARK: - Private Methodes

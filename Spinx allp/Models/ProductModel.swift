@@ -10,6 +10,7 @@ import Foundation
 struct ProductModel {
     let name: String
     let price: Int
+    let category: String
 }
 
 struct CategoryProduct {

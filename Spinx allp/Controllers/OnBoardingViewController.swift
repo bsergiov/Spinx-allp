@@ -69,6 +69,7 @@ class OnBoardingViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        StorageManager.shared.save(for: "balans", value: 100)
         setupView()
         setupConstraints()
     }

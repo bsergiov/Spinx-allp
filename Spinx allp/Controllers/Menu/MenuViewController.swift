@@ -10,7 +10,7 @@ import UIKit
 class MenuViewController: UIViewController {
     
     // MARK: - UI Elements
-    lazy var collectionView: UICollectionView = {
+    lazy private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -20,7 +20,7 @@ class MenuViewController: UIViewController {
         return collectionView
     }()
     
-    lazy var titleChaper: UILabel = {
+    lazy private var titleChaper: UILabel = {
        let title = UILabel()
         title.text = "Title Section"
         title.font = .robotoMedium24()
@@ -29,13 +29,17 @@ class MenuViewController: UIViewController {
         return title
     }()
     
-    lazy var tableView: UITableView = {
+    lazy private var tableView: UITableView = {
         let tableview = UITableView()
         tableview.backgroundColor = .none
         tableview.translatesAutoresizingMaskIntoConstraints = false
         return tableview
     }()
     
+    // MARK: - Private Properies
+    private let menu = DataManager.products
+    private var products: [ProductModel]!
+   
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +67,10 @@ class MenuViewController: UIViewController {
 // MARK: - Setup Views
 extension MenuViewController {
     private func setupView() {
+        guard let category = menu.first else { return }
+        products = category.products
         title = "Menu"
+        titleChaper.text = category.name
         view.backgroundColor = .speceiaBackground
         view.addSubview(tableView)
         view.addSubview(collectionView)
@@ -102,31 +109,31 @@ extension MenuViewController {
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableViewCell.id, for: indexPath) as! MenuTableViewCell
-        cell.setupCell()
-        
+        cell.setupCell(product: products[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = CardProductViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        vc.product = products[indexPath.row]
+        present(vc, animated: true)
     }
 }
 
 // MARK: - Protocols CollectionView
 extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        menu.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCollectionViewCell.id, for: indexPath) as! MenuCollectionViewCell
-        cell.setupCell()
+        cell.setupCell(imagName: menu[indexPath.item].name)
         return cell
     }
     
@@ -135,12 +142,14 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // TODO update table view for actual part
+        products = menu[indexPath.item].products
+        titleChaper.text = menu[indexPath.item].name
+        tableView.reloadData()
     }
 }
 
 extension MenuViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 100, height: 100)
+        CGSize(width: 90, height: 90)
     }
 }

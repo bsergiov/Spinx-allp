@@ -9,7 +9,16 @@ import UIKit
 
 class CardProductViewController: UIViewController {
 
+    // MARK: - Public Properties
+    var product: ProductModel!
+    
     // MARK: - UI Elements
+    lazy private var bgCart: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "\(product.category)_BG")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
         
@@ -44,7 +53,6 @@ class CardProductViewController: UIViewController {
     private lazy var titleForProduct: UILabel = {
         let title = UILabel()
         title.font = .robotoMedium24()
-        title.text = "Hot & Sour Chickent/veg"
         title.minimumScaleFactor = 0.5
         title.textColor = .specialLightGray
         
@@ -82,12 +90,11 @@ class CardProductViewController: UIViewController {
 // MARK: - Private Methodes
 extension CardProductViewController {
     @objc private func getTapped() {
-        let vc = UIViewController()
-        navigationController?.pushViewController(vc, animated: true)
+       dismiss(animated: false)
     }
     
     @objc private func closeTapped() {
-        print("close tap")
+        dismiss(animated: true)
     }
 }
 
@@ -95,7 +102,9 @@ extension CardProductViewController {
 extension CardProductViewController {
     private func setupViews() {
         title = "Card"
-        view.backgroundColor = .specialLightGray
+        titleForProduct.text = product.name
+        priceLabel.text = "\(product.price)"
+        view.addSubview(bgCart)
         view.addSubview(getButton)
         view.addSubview(backgroundForOffer)
         view.addSubview(closeButton)
@@ -108,6 +117,8 @@ extension CardProductViewController {
 // MARK: - Setup Constraints
 extension CardProductViewController {
     private func setupConstraints() {
+        
+        bgCart.frame = view.frame
         
         NSLayoutConstraint.activate([
             closeButton.heightAnchor.constraint(equalToConstant: 22),

@@ -21,8 +21,10 @@ class MenuCollectionViewCell: UICollectionViewCell {
         return image
     }()
     
-    func setupCell() {
+    func setupCell(imagName: String) {
         selectedCell()
+        imageIcon.image = UIImage(named: imagName)
+        
         layer.cornerRadius = frame.height / 2
         imageIcon.bounds = contentView.bounds
         layer.masksToBounds = true
@@ -44,7 +46,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
     // MARK: - Setup Constraints
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            imageIcon.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.8),
+            imageIcon.heightAnchor.constraint(equalTo: contentView.heightAnchor),
             imageIcon.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             imageIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             imageIcon.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
@@ -53,7 +55,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private Methodes
     private func selectedCell() {
-        backgroundColor = isSelected ? .green : .blue
+//        backgroundColor = isSelected ? .green : .blue
         layer.borderColor = isSelected ? UIColor.white.cgColor : UIColor.black.cgColor
         layer.borderWidth = 4
     }

@@ -12,9 +12,6 @@ class MenuTableViewCell: UITableViewCell {
     // MARK: - Public Properties
     static let id = "MenuTableViewCell"
     
-    var price = "200"
-    var nameProduct = "Some item menu"
-    
     // MARK: - UI Elements
     lazy private var contenBackView: UIView = {
        let view = UIView()
@@ -28,7 +25,6 @@ class MenuTableViewCell: UITableViewCell {
     
     lazy private var titleLable: UILabel = {
         let label = UILabel()
-        label.text = nameProduct
         label.textColor = .white
         label.font = .robotoBold16()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +35,6 @@ class MenuTableViewCell: UITableViewCell {
     
     lazy private var priceLabel: UILabel = {
         let label = UILabel()
-        label.text = price
         label.textColor = .white
         label.font = .robotoBold16()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -59,10 +54,11 @@ class MenuTableViewCell: UITableViewCell {
         
     }
     
-    func setupCell() {
+    func setupCell(product: ProductModel) {
         backgroundColor = .clear
         selectionStyle = .none
-        
+        priceLabel.text = "\(product.price)"
+        titleLable.text = product.name
         setupView()
         setupConstraints()
     }

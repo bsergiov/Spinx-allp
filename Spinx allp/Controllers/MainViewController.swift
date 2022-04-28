@@ -112,7 +112,8 @@ class MainViewController: UIViewController {
     
     // MARK: - Action Methodes
     @objc private func leftBarButtonTaped() {
-        
+        let vc = ProfileViewController()
+        present(vc, animated: true)
     }
     
     @objc private func rightBarButtonTaped() {
@@ -120,7 +121,8 @@ class MainViewController: UIViewController {
     }
     
     @objc private func tappedShowCard() {
-        
+        let vc = BonusCardViewController()
+        present(vc, animated: true)
     }
     
     // MARK: - Private Methodes

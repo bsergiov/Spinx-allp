@@ -32,4 +32,8 @@ class StorageManager {
     func getBalans(for key: String) -> Int {
         UserDefaults.standard.integer(forKey: key)
     }
+    
+    func getName(for key: String) -> String? {
+        UserDefaults.standard.string(forKey: key)
+    }
 }

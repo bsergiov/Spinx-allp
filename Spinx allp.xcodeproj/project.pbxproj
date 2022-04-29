@@ -163,12 +163,12 @@
 		CC426C732809656800FC5A26 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CC002F6A280D81DB00383B63 /* Menu */,
 				CC426C622809652F00FC5A26 /* MainViewController.swift */,
 				CC426C9B2809971A00FC5A26 /* CardProductViewController.swift */,
 				CC002F5F280D515700383B63 /* MainTabBarController.swift */,
 				CC426C9D2810280E00FC5A26 /* AboutViewController.swift */,
 				CC29143C2812A6F10085B2D3 /* OnBoardingViewController.swift */,
-				CC002F6A280D81DB00383B63 /* Menu */,
 				CC29146428181F5A0085B2D3 /* WebViewController.swift */,
 				CC291466281983AC0085B2D3 /* BonusCardViewController.swift */,
 				CC291468281AAF6A0085B2D3 /* ProfileViewController.swift */,
@@ -475,6 +475,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GJR2S6X2F8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Spinx allp/SupportFiles/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -502,6 +503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GJR2S6X2F8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Spinx allp/SupportFiles/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

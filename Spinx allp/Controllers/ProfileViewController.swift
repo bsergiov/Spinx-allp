@@ -33,11 +33,27 @@ class ProfileViewController: UIViewController {
     lazy private var avaImageView: UIImageView = {
         let image = UIImageView()
         image.layer.cornerRadius = image.frame.height / 2
-        image.layer.borderColor = UIColor.white.cgColor
+        image.clipsToBounds = true
+        if let data = UserDefaults.standard.data(forKey: "avatarUser") {
+            let decoded = try! PropertyListDecoder().decode(Data.self, from: data)
+            let imageAva = UIImage(data: decoded)
+            image.image = imageAva
+        } else { image.layer.borderColor = UIColor.white.cgColor }
+        
         image.layer.borderWidth = 10
         image.backgroundColor = .specialYeloow
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
+    }()
+    
+    lazy private var editButtonImage: UIButton = {
+        let button = UIButton(type: .system)
+        let image = UIImage(systemName: "pencil.circle")
+        button.setImage(image, for: .normal)
+        button.tintColor = .specialDarkGrey
+        button.addTarget(self, action: #selector(editPhoto), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     lazy private var backInfo: UIView = {
@@ -90,7 +106,7 @@ class ProfileViewController: UIViewController {
     
     lazy private var valueIdlable: UILabel = {
         let label = UILabel()
-        //todo при загрузке генерить ид и закивать в стораж
+        //todo при загрузке генерить ид и закидывать в стораж
         label.text = "123134213"
         label.font = .robotoMedium18()
         label.textColor = .white
@@ -111,13 +127,23 @@ class ProfileViewController: UIViewController {
     
     lazy private var valueNameLable: UILabel = {
         let label = UILabel()
-        // todo реализовать подгрузку имени из стораж манаджера
-        label.text = "Your Name"
+        label.text = StorageManager.shared.getName(for: "name") ?? "You Name"
         label.font = .robotoMedium18()
         label.textColor = .white
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    lazy private var addnameButton: UIButton = {
+        let button = UIButton()
+        let image = UIImage(systemName: "plus.circle.fill")
+        button.setImage(image, for: .normal)
+        button.tintColor = .white
+        button.tag = 0
+        button.addTarget(self, action: #selector(addPlusTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     lazy private var titlePhoneLable: UILabel = {
@@ -132,8 +158,7 @@ class ProfileViewController: UIViewController {
     
     lazy private var valuePhoneLable: UILabel = {
         let label = UILabel()
-        // todo реализовать подгрузку имени из стораж манаджера
-        label.text = "Add phone"
+        label.text = StorageManager.shared.getName(for: "phone") ?? "Add phone"
         label.font = .robotoMedium18()
         label.textColor = .white
         label.textAlignment = .left
@@ -147,7 +172,7 @@ class ProfileViewController: UIViewController {
         
         button.setImage(image, for: .normal)
         button.tintColor = .white
-        button.tag = 0
+        button.tag = 1
         button.addTarget(self, action: #selector(addPlusTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -165,8 +190,7 @@ class ProfileViewController: UIViewController {
     
     lazy private var valueMailLable: UILabel = {
         let label = UILabel()
-        // todo реализовать подгрузку имени из стораж манаджера
-        label.text = "Add Mail"
+        label.text = StorageManager.shared.getName(for: "mail") ?? "Add Mail"
         label.font = .robotoMedium18()
         label.textColor = .white
         label.textAlignment = .left
@@ -180,7 +204,7 @@ class ProfileViewController: UIViewController {
         
         button.setImage(image, for: .normal)
         button.tintColor = .white
-        button.tag = 1
+        button.tag = 2
         button.addTarget(self, action: #selector(addPlusTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -199,7 +223,7 @@ class ProfileViewController: UIViewController {
     }
 }
 
-// MARK: - Private Methodes
+// MARK: - UI Actions
 extension ProfileViewController {
     @objc private func closeTapped() {
         dismiss(animated: true)
@@ -208,17 +232,72 @@ extension ProfileViewController {
     @objc private func addPlusTapped(_ sender: UIButton) {
         let message = sender.tag == 0 ? "phone" : "mail"
         print("tapped \(message) tag \(sender.tag)")
-        showAllert(title: "add Phone", message: "phone")
+        showAllert(title: "add Phone", message: "phone", tag: sender.tag)
     }
     
-    private func showAllert(title: String, message: String) {
+    @objc private func editPhoto() {
+        alertTakeTypePhoto { [weak self] source in
+            self?.chooseImagePicker(source: source)
+        }
+    }
+}
+
+// MARK: - Private Methodes
+extension ProfileViewController {
+   
+    
+    private func alertTakeTypePhoto(completionHandler: @escaping (UIImagePickerController.SourceType) -> Void) {
+        let alert = UIAlertController(title: "Photo",
+                                      message: "Select the source of the photos",
+                                      preferredStyle: .actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
+            let camera = UIImagePickerController.SourceType.camera
+            completionHandler(camera)
+        }
+        let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { _ in
+            let photoLibrary = UIImagePickerController.SourceType.photoLibrary
+            completionHandler(photoLibrary)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addAction(cameraAction)
+        alert.addAction(libraryAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
+    }
+    
+    private func savePhotoToUserDefault(image: UIImage){
+        guard let data = image.jpegData(compressionQuality: 0.5) else { return }
+        let encoded = try! PropertyListEncoder().encode(data)
+        UserDefaults.standard.set(encoded, forKey: "avatarUser")
+        print("tut save")
+    }
+    
+    private func chooseImagePicker(source: UIImagePickerController.SourceType) {
+        let picker = UIImagePickerController()
+        picker.sourceType = source
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    
+    private func showAllert(title: String, message: String, tag: Int?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let actioOk = UIAlertAction(title: "OK", style: .default) { [weak alert] _ in
             guard let textFields = alert?.textFields else { return }
-            if let tf = textFields[0].text {
-                print(tf)
+            guard let firstFild = textFields[0].text else { return }
+            switch tag {
+            case 0: //name
+                StorageManager.shared.save(for: "name", value: firstFild)
+                self.valueNameLable.text = firstFild
+            case 1: //phone
+                StorageManager.shared.save(for: "phone", value: firstFild)
+                self.valuePhoneLable.text = firstFild
+            default: // mail
+                StorageManager.shared.save(for: "mail", value: firstFild)
+                self.valueMailLable.text = firstFild
             }
-            
         }
         alert.addAction(actioOk)
         alert.addTextField { texfield in
@@ -229,17 +308,36 @@ extension ProfileViewController {
     }
 }
 
+// MARK: - UIImagePickerControllerDelegate & UINavigationControllerDelegate
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        savePhotoToUserDefault(image: image)
+        avaImageView.image = image
+    }
+}
+
+// MARK: - Setup View
 extension ProfileViewController {
     private func setupView() {
         view.addSubview(closeButton)
         view.addSubview(descriptionLabel)
         view.addSubview(avaImageView)
+        view.addSubview(editButtonImage)
         view.addSubview(backInfo)
         backInfo.addSubview(titleIdLable)
         backInfo.addSubview(valueIdlable)
         backInfo.addSubview(separateOne)
         backInfo.addSubview(titleNameLable)
         backInfo.addSubview(valueNameLable)
+        backInfo.addSubview(addnameButton)
         backInfo.addSubview(separateTwo)
         backInfo.addSubview(titlePhoneLable)
         backInfo.addSubview(valuePhoneLable)
@@ -255,6 +353,7 @@ extension ProfileViewController {
     }
 }
 
+// MARK: - Setup constraints
 extension ProfileViewController {
     private func setupConstraints() {
         //closeButton
@@ -277,6 +376,13 @@ extension ProfileViewController {
             avaImageView.widthAnchor.constraint(equalToConstant: 208),
             avaImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             avaImageView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 0)
+        ])
+        //editButtonImage
+        NSLayoutConstraint.activate([
+            editButtonImage.heightAnchor.constraint(equalToConstant: 36),
+            editButtonImage.widthAnchor.constraint(equalToConstant: 36),
+            editButtonImage.trailingAnchor.constraint(equalTo: avaImageView.trailingAnchor, constant: -25),
+            editButtonImage.bottomAnchor.constraint(equalTo: avaImageView.bottomAnchor, constant: -30)
         ])
         //backInfo
         NSLayoutConstraint.activate([
@@ -319,6 +425,13 @@ extension ProfileViewController {
             valueNameLable.widthAnchor.constraint(equalToConstant: 200),
             valueNameLable.leadingAnchor.constraint(equalTo: backInfo.leadingAnchor, constant: 15),
             valueNameLable.topAnchor.constraint(equalTo: titleNameLable.bottomAnchor, constant: 15)
+        ])
+        //addnameButton
+        NSLayoutConstraint.activate([
+            addnameButton.heightAnchor.constraint(equalToConstant: 35),
+            addnameButton.widthAnchor.constraint(equalToConstant: 35),
+            addnameButton.trailingAnchor.constraint(equalTo: backInfo.trailingAnchor, constant: -15),
+            addnameButton.topAnchor.constraint(equalTo: separateOne.bottomAnchor, constant: 17)
         ])
         //separateTwo
         NSLayoutConstraint.activate([

@@ -14,8 +14,8 @@ struct DataManager {
     
     static let workShedule = "Monday - Sunday"
     
-    static let urlPolicyString = "https://yandex.ru"
-    static let urlTermsString = "https://google.com"
+    static let urlPolicyString = "https://sphinxallp.web.app/policy/"
+    static let urlTermsString = "https://sphinxallp.web.app/terms/"
     
     static let products = [
         CategoryProduct(name: "APPETIZERS", products: [
